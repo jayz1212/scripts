@@ -5,13 +5,13 @@ COMMAND="${2:-build}"  # If no value is provided, default to "build"
 DELZIP="${3}"
 
 # Update and install ccache
-#sudo apt-get update -y
-#sudo apt-get install -y apt-utils
-#sudo apt-get install -y ccache
-#export USE_CCACHE=1
-#ccache -M 100G
-#export CCACHE_DIR=/tmp/src/android/cc
-#echo $CCACHE_DIR
+sudo apt-get update -y
+sudo apt-get install -y apt-utils
+sudo apt-get install -y ccache
+export USE_CCACHE=1
+ccache -M 100G
+export CCACHE_DIR=/tmp/src/android/cc
+echo $CCACHE_DIR
 ## Remove existing build artifacts
 if [ "$DELZIP" == "delzip" ]; then
     rm -rf out/target/product/*/*.zip
