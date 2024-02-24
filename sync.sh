@@ -25,6 +25,7 @@ git clean -fdX
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 repo sync -c -j16 --force-sync --no-clone-bundle --no-tags
+git clean -fdX
 source scripts/fixes.sh
 source build/envsetup.sh
 
