@@ -17,7 +17,7 @@ if [ "$DELZIP" == "delzip" ]; then
     rm -rf out/target/product/*/*.zip
 fi
 
-git clean -fdX
+#git clean -fdX
 #rm -rf frameworks/base/
 #rm -rf .repo/local_manifests
 #rm -rf device/lge/
