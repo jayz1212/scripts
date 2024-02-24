@@ -10,7 +10,7 @@ sudo apt-get install -y apt-utils
 sudo apt-get install -y ccache
 export USE_CCACHE=1
 ccache -M 100G
-export CCACHE_DIR=/tmp/src/manifest/cc
+export CCACHE_DIR=/tmp/src/android/cc
 echo $CCACHE_DIR
 ## Remove existing build artifacts
 if [ "$DELZIP" == "delzip" ]; then
