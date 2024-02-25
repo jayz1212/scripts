@@ -25,7 +25,7 @@ rm -rf prebuilts
 #rm -rf kernel/lge/msm8996
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
-repo sync -c -j16 --force-sync --no-clone-bundle --no-tags
+repo sync -c -j16 --force-sync --no-clone-bundle --no-tags --prune
 source scripts/fixes.sh
 source build/envsetup.sh
 
