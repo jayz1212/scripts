@@ -18,7 +18,7 @@ if [ "$DELZIP" == "delzip" ]; then
 fi
 
 #git clean -fdX
-#rm -rf frameworks/base/
+rm -rf prebuilts/clang/host/linux-x86
 #rm -rf .repo/local_manifests
 #rm -rf device/lge/
 #rm -rf kernel/lge/msm8996
