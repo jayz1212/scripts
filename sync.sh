@@ -18,6 +18,7 @@ if [ "$DELZIP" == "delzip" ]; then
 fi
 
 #git clean -fdX
+rm -rf .repo/projects/prebuilts
 rm -rf prebuilts
 #rm -rf .repo/local_manifests
 #rm -rf device/lge/
