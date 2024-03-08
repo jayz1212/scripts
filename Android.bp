@@ -420,6 +420,25 @@ java_defaults {
 }
 
 java_library {
+    name: "framework-base",
+    srcs: [
+        // existing source files
+    ],
+    resource_dirs: [
+        ":org.lineageos.platform.resources",
+        ":lineage-sdk:org.lineageos.platform-res",
+        // Add other resource directories as needed
+    ],
+    static_libs: [
+        ":org.lineageos.platform",
+        // Add other dependencies as needed
+    ],
+}
+
+
+
+
+java_library {
     name: "framework-minus-apex",
     defaults: ["framework-minus-apex-defaults"],
     installable: true,
