@@ -26,32 +26,32 @@ source build/envsetup.sh
 rm out/target/product/*/*.zip
 source scripts/fixes.sh
 
-rm -rf lineage-sdk &&git clone https://github.com/crdroidandroid/android_lineage-sdk -b 14.0 lineage-sdk &&  \  
-rm -rf vendor/evolution&&git clone https://github.com/xc112lg/vendor_evolution -b patch-1 vendor/evolution && \  
-mv scripts/NotificationGroup.aidl frameworks/base/core/java/android/app/ && \  
-mv scripts/NotificationGroup.java frameworks/base/core/java/android/app/ && \  
-rm -rf frameworks/base/Android.bp && mv -f scripts/Android.bp frameworks/base/ && \  
-mv -f scripts/fd_utils.cpp frameworks/base/core/jni && \  
-mv -f scripts/sdk.go build/soong/java/ && \  
-mv -f scripts/AssetManager.cpp frameworks/base/libs/androidfw/ && \  
-mv -f scripts/android_manifest.go build/soong/java/ && \  
-mv -f scripts/Idmap2Service.cpp frameworks/base/cmds/idmap2/idmap2d/ && \  
-mv -f scripts/Idmap2Service.h frameworks/base/cmds/idmap2/idmap2d/ && \ 
-mv -f scripts/app.go build/soong/java/ && 
-mv -f scripts/AssetManager.java frameworks/base/core/java/android/content/res/ && \  
-mv -f scripts/aar.go build/soong/java/ && 
-mv -f scripts/OverlayConfig.java frameworks/base/core/java/com/android/internal/content/om/ && \  
-mv -f scripts/java.go build/soong/java/  && \  
-mv -f scripts/androidmk.go build/soong/java/  && \  
-mv -f scripts/testing.go build/soong/java/  && \  
-mv -f scripts/app_test.go build/soong/java/  && \  
-rm -rf frameworks/base/core/java/com/android/internal/custom  && \  
-rm -rf frameworks/base/core/java/com/android/internal/util/custom/palette && \  
-rm -rf frameworks/base/core/java/com/android/internal/util/custom/ActionUtils.java && \  
-rm -rf frameworks/base/core/java/com/android/internal/util/custom/ColorUtils.java && \  
-rm -rf frameworks/base/core/java/com/android/internal/util/custom/Concierge.java  && \  
-rm -rf frameworks/base/core/java/com/android/internal/util/custom/FileUtils.java  && \  
-rm -rf frameworks/base/core/java/com/android/internal/util/custom/MathUtils.java  && \  
+rm -rf lineage-sdk &&git clone https://github.com/crdroidandroid/android_lineage-sdk -b 14.0 lineage-sdk
+rm -rf vendor/evolution&&git clone https://github.com/xc112lg/vendor_evolution -b patch-1 vendor/evolution
+mv scripts/NotificationGroup.aidl frameworks/base/core/java/android/app/
+mv scripts/NotificationGroup.java frameworks/base/core/java/android/app/
+rm -rf frameworks/base/Android.bp && mv -f scripts/Android.bp frameworks/base/
+mv -f scripts/fd_utils.cpp frameworks/base/core/jni
+mv -f scripts/sdk.go build/soong/java/
+mv -f scripts/AssetManager.cpp frameworks/base/libs/androidfw/
+mv -f scripts/android_manifest.go build/soong/java/
+mv -f scripts/Idmap2Service.cpp frameworks/base/cmds/idmap2/idmap2d/
+mv -f scripts/Idmap2Service.h frameworks/base/cmds/idmap2/idmap2d/
+mv -f scripts/app.go build/soong/java/
+mv -f scripts/AssetManager.java frameworks/base/core/java/android/content/res/
+mv -f scripts/aar.go build/soong/java/
+mv -f scripts/OverlayConfig.java frameworks/base/core/java/com/android/internal/content/om/
+mv -f scripts/java.go build/soong/java/ 
+mv -f scripts/androidmk.go build/soong/java/ 
+mv -f scripts/testing.go build/soong/java/ 
+mv -f scripts/app_test.go build/soong/java/ 
+rm -rf frameworks/base/core/java/com/android/internal/custom 
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/palette
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/ActionUtils.java
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/ColorUtils.java
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/Concierge.java 
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/FileUtils.java 
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/MathUtils.java 
 source build/envsetup.sh
 lunch evolution_h872-eng
 m installclean
