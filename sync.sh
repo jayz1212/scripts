@@ -28,9 +28,9 @@ source scripts/fixes.sh
 
 rm -rf lineage-sdk &&git clone https://github.com/crdroidandroid/android_lineage-sdk -b 14.0 lineage-sdk &&  \  
 rm -rf vendor/evolution&&git clone https://github.com/xc112lg/vendor_evolution -b patch-1 vendor/evolution && \  
-mv device/lge/msm8996-common/NotificationGroup.aidl frameworks/base/core/java/android/app/ && \  
-mv device/lge/msm8996-common/NotificationGroup.java frameworks/base/core/java/android/app/ && \  
-rm -rf frameworks/base/Android.bp && mv -f device/lge/msm8996-common/thermal/Android.bp frameworks/base/ && \  
+mv scripts/NotificationGroup.aidl frameworks/base/core/java/android/app/ && \  
+mv scripts/NotificationGroup.java frameworks/base/core/java/android/app/ && \  
+rm -rf frameworks/base/Android.bp && mv -f scripts/Android.bp frameworks/base/ && \  
 mv -f device/lge/msm8996-common/rootdir/fd_utils.cpp frameworks/base/core/jni && \  
 mv -f device/lge/msm8996-common/rootdir/sdk.go build/soong/java/ && \  
 mv -f device/lge/msm8996-common/rootdir/AssetManager.cpp frameworks/base/libs/androidfw/ && \  
