@@ -54,7 +54,7 @@ rm -rf frameworks/base/core/java/com/android/internal/util/custom/FileUtils.java
 rm -rf frameworks/base/core/java/com/android/internal/util/custom/MathUtils.java 
 source build/envsetup.sh
 lunch evolution_h872-eng
-m installclean
+make clean
 m -j$(nproc --all) evolution
 #lunch lineage_us997-userdebug
 #m -j$(nproc --all) bacon
