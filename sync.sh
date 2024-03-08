@@ -24,7 +24,7 @@ source build/envsetup.sh
 #m clean
 #make clean
 rm out/target/product/*/*.zip
-#source scripts/fixes.sh
+source scripts/fixes.sh
 
 
 
