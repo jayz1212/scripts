@@ -30,7 +30,7 @@ rm -rf lineage-sdk &&git clone https://github.com/crdroidandroid/android_lineage
 rm -rf vendor/evolution&&git clone https://github.com/xc112lg/vendor_evolution -b patch-1 vendor/evolution
 mv scripts/NotificationGroup.aidl frameworks/base/core/java/android/app/
 mv scripts/NotificationGroup.java frameworks/base/core/java/android/app/
-rm -rf frameworks/base/Android.bp && mv -f scripts/Android.bp frameworks/base/
+mv -f scripts/Android.bp frameworks/base/
 mv -f scripts/fd_utils.cpp frameworks/base/core/jni
 mv -f scripts/sdk.go build/soong/java/
 mv -f scripts/AssetManager.cpp frameworks/base/libs/androidfw/
