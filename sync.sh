@@ -26,10 +26,34 @@ source build/envsetup.sh
 rm out/target/product/*/*.zip
 source scripts/fixes.sh
 
-
-
-
-lunch evolution_h872-eng
+rm -rf lineage-sdk &&git clone https://github.com/crdroidandroid/android_lineage-sdk -b 14.0 lineage-sdk &&  \  
+rm -rf vendor/evolution&&git clone https://github.com/xc112lg/vendor_evolution -b patch-1 vendor/evolution && \  
+mv device/lge/msm8996-common/NotificationGroup.aidl frameworks/base/core/java/android/app/ && \  
+mv device/lge/msm8996-common/NotificationGroup.java frameworks/base/core/java/android/app/ && \  
+rm -rf frameworks/base/Android.bp && mv -f device/lge/msm8996-common/thermal/Android.bp frameworks/base/ && \  
+mv -f device/lge/msm8996-common/rootdir/fd_utils.cpp frameworks/base/core/jni && \  
+mv -f device/lge/msm8996-common/rootdir/sdk.go build/soong/java/ && \  
+mv -f device/lge/msm8996-common/rootdir/AssetManager.cpp frameworks/base/libs/androidfw/ && \  
+mv -f device/lge/msm8996-common/rootdir/android_manifest.go build/soong/java/ && \  
+mv -f device/lge/msm8996-common/rootdir/Idmap2Service.cpp frameworks/base/cmds/idmap2/idmap2d/ && \  
+mv -f device/lge/msm8996-common/rootdir/Idmap2Service.h frameworks/base/cmds/idmap2/idmap2d/ && \ 
+mv -f device/lge/msm8996-common/rootdir/app.go build/soong/java/ && 
+mv -f device/lge/msm8996-common/rootdir/AssetManager.java frameworks/base/core/java/android/content/res/ && \  
+mv -f device/lge/msm8996-common/rootdir/aar.go build/soong/java/ && 
+mv -f device/lge/msm8996-common/rootdir/OverlayConfig.java frameworks/base/core/java/com/android/internal/content/om/ && \  
+mv -f device/lge/msm8996-common/rootdir/java.go build/soong/java/  && \  
+mv -f device/lge/msm8996-common/rootdir/androidmk.go build/soong/java/  && \  
+mv -f device/lge/msm8996-common/rootdir/testing.go build/soong/java/  && \  
+mv -f device/lge/msm8996-common/rootdir/app_test.go build/soong/java/  && \  
+rm -rf frameworks/base/core/java/com/android/internal/custom  && \  
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/palette && \  
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/ActionUtils.java && \  
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/ColorUtils.java && \  
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/Concierge.java  && \  
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/FileUtils.java  && \  
+rm -rf frameworks/base/core/java/com/android/internal/util/custom/MathUtils.java  && \  
+source build/envsetup.sh && \  
+lunch evolution_h872-eng && \ 
 m installclean
 m -j$(nproc --all) evolution
 #lunch lineage_us997-userdebug
