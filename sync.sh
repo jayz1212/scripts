@@ -27,7 +27,7 @@ rm out/target/product/*/*.zip
 source scripts/fixes.sh
 
 rm -rf lineage-sdk &&git clone https://github.com/crdroidandroid/android_lineage-sdk -b 14.0 lineage-sdk
-rm -rf vendor/evolution&&git clone https://github.com/xc112lg/vendor_evolution -b patch-1 vendor/evolution
+rm -rf vendor/evolution&&git clone https://github.com/xc112lg/vendor_evolution -b udc1 vendor/evolution
 mv scripts/NotificationGroup.aidl frameworks/base/core/java/android/app/
 mv scripts/NotificationGroup.java frameworks/base/core/java/android/app/
 mv -f scripts/Android.bp frameworks/base/
