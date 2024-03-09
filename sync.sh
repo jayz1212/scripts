@@ -45,7 +45,7 @@ if [ "$DEVICE" == "all" ]; then
     echo "Building for all devices..."
 
 lunch evolution_h872-eng
-
+m installclean
 m -j$(nproc --all) evolution
  
 elif [ "$DEVICE" == "h872" ]; then
