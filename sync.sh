@@ -20,7 +20,7 @@ if [ "$DELZIP" == "delzip" ]; then
 fi
 
 #git clean -fdX
-
+rm -rf frameworks/base/
 rm -rf .repo/local_manifests
 rm -rf vendor/evolution
 mkdir -p .repo/local_manifests
