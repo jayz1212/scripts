@@ -5,7 +5,8 @@ wait_one_second() {
 }
 mkdir -p cc
 mkdir -p c
-time find ${PWD}/cc/ -type f | xargs -n 1 -P 10 rsync -au {} ${PWD}/c
+mv cc/
+time ls -1 cc | xargs -I {} -P 5 -n 1 rsync -au cc/{} c/
 #time rsync -au --parallel=8 ${PWD}/cc  ${PWD}/c
 #cp -rf ${PWD}/cc  ${PWD}/c
 # Remove existing build artifacts
@@ -24,9 +25,10 @@ wait_one_second && export CCACHE_DIR=${PWD}/cc
 wait_one_second && ccache -M 100G
 ccache -s
 ccache -s
+ccache -o compression=true
 echo $CCACHE_DIR
 echo $CCACHE_EXEC
-time find ${PWD}/c/ -type f | xargs -n 1 -P 10 rsync -au {} ${PWD}/cc
+time ls -1 c | xargs -I {} -P 5 -n 1 rsync -au c/{} cc/
 rm -rf .repo/local_manifests
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
