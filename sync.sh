@@ -25,7 +25,8 @@ wait_one_second && export CCACHE_DIR=${PWD}/cc
 wait_one_second && ccache -M 100G
 ccache -s
 ccache -s
-ccache -o compression=true
+ccache -o compression=false
+ccache --show-config | grep compression
 echo $CCACHE_DIR
 echo $CCACHE_EXEC
 time ls -1 c | xargs -I {} -P 5 -n 1 rsync -au c/{} cc/
