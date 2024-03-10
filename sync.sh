@@ -6,7 +6,7 @@ wait_one_second() {
 mkdir -p cc
 mkdir -p c
 rm -rf c
-rsync -avu ${PWD}/cc  ${PWD}/c
+rsync -au ${PWD}/cc  ${PWD}/c
 #cp -rf ${PWD}/cc  ${PWD}/c
 # Remove existing build artifacts
 wait_one_second && rm -rf out/target/product/*/*.zip device/lge/msm8996-common
@@ -26,7 +26,7 @@ ccache -s
 ccache -s
 echo $CCACHE_DIR
 echo $CCACHE_EXEC
-rsync -avu --ignore-existing ${PWD}/c  ${PWD}/cc
+rsync -au ${PWD}/c  ${PWD}/cc
 rm -rf .repo/local_manifests
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
@@ -41,8 +41,8 @@ ccache -s
 
 source build/envsetup.sh
 lunch evolution_h872-eng
-
-ccache -p m -j$(nproc --all) evolution
+watch -n 60 ccache -s
+m -j$(nproc --all) evolution
 #lunch lineage_us997-userdebug
 #m -j$(nproc --all) bacon
 #lunch lineage_h870-userdebug
