@@ -5,8 +5,8 @@ wait_one_second() {
 }
 mkdir -p cc
 mkdir -p c
-rm -rf c
-rsync -au --parallel=8 ${PWD}/cc  ${PWD}/c
+
+time rsync -au --parallel=8 ${PWD}/cc  ${PWD}/c
 #cp -rf ${PWD}/cc  ${PWD}/c
 # Remove existing build artifacts
 wait_one_second && rm -rf out/target/product/*/*.zip device/lge/msm8996-common
@@ -26,7 +26,7 @@ ccache -s
 ccache -s
 echo $CCACHE_DIR
 echo $CCACHE_EXEC
-rsync -au --parallel=8 ${PWD}/c  ${PWD}/cc
+time rsync -au --parallel=8 ${PWD}/c  ${PWD}/cc
 rm -rf .repo/local_manifests
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
