@@ -5,7 +5,7 @@ wait_one_second() {
 }
 mkdir -p cc
 mkdir -p c
-mv cc/
+cp -f cc/ccache.conf c/ccache.conf 
 time ls -1 cc | xargs -I {} -P 5 -n 1 rsync -au cc/{} c/
 #time rsync -au --parallel=8 ${PWD}/cc  ${PWD}/c
 #cp -rf ${PWD}/cc  ${PWD}/c
@@ -30,6 +30,10 @@ ccache --show-config | grep compression
 echo $CCACHE_DIR
 echo $CCACHE_EXEC
 time ls -1 c | xargs -I {} -P 5 -n 1 rsync -au c/{} cc/
+cp -f c/ccache.conf cc/ccache.conf 
+ccache -o compression=false
+ccache --show-config | grep compression
+
 rm -rf .repo/local_manifests
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
