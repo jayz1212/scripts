@@ -25,13 +25,13 @@ source build/envsetup.sh
 #make clean
 ccache -s
 
-rm out/target/product/*/*.zip
-source scripts/fixes.sh
+# rm out/target/product/*/*.zip
+# source scripts/fixes.sh
 
-source build/envsetup.sh
-lunch evolution_h872-eng
+# source build/envsetup.sh
+# lunch evolution_h872-eng
 
-ccache m -j$(nproc --all) evolution
+# ccache m -j$(nproc --all) evolution
 #lunch lineage_us997-userdebug
 #m -j$(nproc --all) bacon
 #lunch lineage_h870-userdebug
