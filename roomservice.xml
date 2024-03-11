@@ -17,7 +17,7 @@
   <project name="xc112lg/android_device_lge_h872" path="device/lge/h872" remote="github" revision="evo" />
   <project name="LineageOS/android_hardware_sony_timekeep" path="hardware/sony/timekeep" remote="github" revision="lineage-21" />
   <project name="xc112lg/android_device_lge_g6-common" path="device/lge/g6-common" remote="github" revision="evo" />
-    <project name="xc112lg/android_hardware_lge" path="hardware/lge" remote="github" revision="evo1" />
+    <project name="xc112lg/android_hardware_lge" path="hardware/lge" remote="github" revision="evo" />
   <project name="xc112lg/msm8996_lge_kernel" path="kernel/lge/msm8996" remote="github" revision="patch-1" />
     <project name="xc112lg/android_device_lge_msm8996-common" path="device/lge/msm8996-common" remote="github" revision="ev2" />
 </manifest>
