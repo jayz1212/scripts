@@ -17,9 +17,9 @@ ccache -s
 #source build/envsetup.sh && lunch evolution_h872-eng && (while true; do clear; ccache -s; sleep 60; done) & m -j$(nproc --all) evolution
 
 source build/envsetup.sh
-lunch evolution_h872-eng
+lunch cipher_h872-eng
 
-m -j$(nproc --all) evolution
+m -j$(nproc --all) bacon
 #lunch lineage_us997-userdebug
 #m -j$(nproc --all) bacon
 #lunch lineage_h870-userdebug
