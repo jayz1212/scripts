@@ -1,7 +1,7 @@
 #!/bin/bash
 # Function to wait for 1 second
 
-rm -rf .repo/local_manifests
+rm -rf .repo/local_manifests hardware/qcom-caf
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 cp scripts/lineage.xml .repo/local_manifests
