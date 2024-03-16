@@ -1,11 +1,8 @@
 #!/bin/bash
-# Function to wait for 1 second
-
 rm -rf .repo/local_manifests hardware/qcom-caf
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
-cp scripts/lineage.xml .repo/local_manifests
-cp scripts/crdroid.xml .repo/local_manifests
+mv scripts/statix.xml .repo/manifests/snippets
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 source build/envsetup.sh
 #m clean
@@ -20,7 +17,3 @@ source build/envsetup.sh
 lunch cipher_h872-eng
 
 m -j$(nproc --all) bacon
-#lunch lineage_us997-userdebug
-#m -j$(nproc --all) bacon
-#lunch lineage_h870-userdebug
-#m -j$(nproc --all) bacon
