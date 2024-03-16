@@ -37,6 +37,8 @@ ccache --show-config | grep compression
 rm -rf .repo/local_manifests
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
+cp scripts/lineage.xml .repo/local_manifests
+cp scripts/crdroid.xml .repo/local_manifests
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 source build/envsetup.sh
 #m clean
