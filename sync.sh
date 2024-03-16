@@ -7,7 +7,6 @@ repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 source build/envsetup.sh
 #m clean
 #make clean
-ccache -s
 
  rm out/target/product/*/*.zip
 # source scripts/fixes.sh
