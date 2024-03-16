@@ -7,7 +7,25 @@
            revision="refs/heads/lineage-21.0"
 />
 
-
+<remove-project path="hardware/qcom-caf/msm8998/audio" name="android_hardware_qcom_audio" revision="tm-caf-msm8998" remote="statix" />
+  <remove-project path="hardware/qcom-caf/msm8998/display" name="android_hardware_qcom_display" revision="udc-caf-msm8998" remote="statix"  />
+  <remove-project path="hardware/qcom-caf/msm8998/media" name="android_hardware_qcom_media" revision="tm-caf-msm8998" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sdm845/audio" name="android_hardware_qcom_audio" revision="tm-caf-sdm845" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sdm845/display" name="android_hardware_qcom_display" revision="udc-caf-sdm845" remote="statix"  />
+  <remove-project path="hardware/qcom-caf/sdm845/media" name="android_hardware_qcom_media" revision="tm-caf-sdm845" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8150/audio" name="android_hardware_qcom_audio" revision="tm-caf-sm8150" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8150/display" name="android_hardware_qcom_display" revision="udc-caf-sm8150" remote="statix"  />
+  <remove-project path="hardware/qcom-caf/sm8150/media" name="android_hardware_qcom_media" revision="tm-caf-sm8150" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8250/audio" name="android_hardware_qcom_audio" revision="tm-caf-sm8250" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8250/display" name="android_hardware_qcom_display" revision="udc-caf-sm8250" remote="statix"  />
+  <remove-project path="hardware/qcom-caf/sm8250/media" name="android_hardware_qcom_media" revision="tm-caf-sm8250" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8350/audio" name="android_hardware_qcom_audio" revision="udc-caf-sm8350" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8350/display" name="android_hardware_qcom_display" revision="udc-caf-sm8350" remote="statix"  />
+  <remove-project path="hardware/qcom-caf/sm8350/media" name="android_hardware_qcom_media" revision="udc-caf-sm8350" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8450/audio" name="android_hardware_qcom_audio" revision="udc-caf-sm8450" remote="statix" />
+  <remove-project path="hardware/qcom-caf/sm8450/display" name="android_hardware_qcom_display" revision="udc-caf-sm8450" remote="statix"  />
+  <remove-project path="hardware/qcom-caf/sm8450/media" name="android_hardware_qcom_media" revision="tm-caf-sm8450" remote="statix" />
+<remove-project path="hardware/qcom-caf/common" name="android_hardware_qcom-caf_common" remote="statix" revision="tm" />
 
 
   <project path="hardware/qcom-caf/common" name="LineageOS/android_hardware_qcom-caf_common" groups="qcom" >
