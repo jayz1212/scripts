@@ -3,14 +3,10 @@
 
   <remote  name="crdroid"
            fetch="https://github.com/"
-           sync-c="true"
-           sync-j="4"
            revision="refs/heads/14.0" />
 
   <remote  name="crdroid-gitlab"
            fetch="https://gitlab.com/"
-           sync-c="true"
-           sync-j="4"
            revision="refs/heads/14.0" />
 
 
