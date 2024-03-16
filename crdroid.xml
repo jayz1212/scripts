@@ -2,9 +2,8 @@
 <manifest>
 
 
- <remote  name="github"
-           fetch=".."
-           review="review.lineageos.org"
+ <remote  name="github2"
+           fetch="https://github.com"
            
             revision="refs/heads/14.0"
            remote="github" />
@@ -13,10 +12,10 @@
   <remove-project path="hardware/qcom-caf/sm8150/display" name="android_hardware_qcom_display" revision="udc-caf-sm8150" remote="statix"  />
   <remove-project path="hardware/qcom-caf/sm8150/media" name="android_hardware_qcom_media" revision="tm-caf-sm8150" remote="statix" />
 
-  <project path="hardware/qcom-caf/sm8150/audio" name="crdroidandroid/android_hardware_qcom_audio" groups="qcom,msmnile" revision="14.0-caf-sm8150" />
-  <project path="hardware/qcom-caf/sm8150/display" name="crdroidandroid/android_hardware_qcom_display" groups="qcom" revision="14.0-caf-sm8150" />
-  <project path="hardware/qcom-caf/sm8150/media" name="crdroidandroid/android_hardware_qcom_media" groups="qcom,msmnile" revision="14.0-caf-sm8150" />
-  <project path="hardware/qcom-caf/sm8550/audio/agm" name="crdroidandroid/android_vendor_qcom_opensource_agm" groups="qcom,kailua-audio" revision="14.0-caf-sm8550" />
+  <project path="hardware/qcom-caf/sm8150/audio" name="crdroidandroid/android_hardware_qcom_audio" groups="qcom,msmnile" revision="14.0-caf-sm8150" remote="github2"/>
+  <project path="hardware/qcom-caf/sm8150/display" name="crdroidandroid/android_hardware_qcom_display" groups="qcom" revision="14.0-caf-sm8150" remote="github2"/>
+  <project path="hardware/qcom-caf/sm8150/media" name="crdroidandroid/android_hardware_qcom_media" groups="qcom,msmnile" revision="14.0-caf-sm8150" remote="github2" />
+  <project path="hardware/qcom-caf/sm8550/audio/agm" name="crdroidandroid/android_vendor_qcom_opensource_agm" groups="qcom,kailua-audio" revision="14.0-caf-sm8550"remote="github2" />
 
 
 </manifest>
