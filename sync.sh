@@ -1,30 +1,5 @@
 #!/bin/bash
-mkdir -p cc
-mkdir -p c
-# Update and install ccache
-sudo apt-get update -y
-sudo apt-get install -y apt-utils
-sudo apt-get install -y ccache
-sleep 1
-export USE_CCACHE=1
-sleep 1
-export CCACHE_DIR=$PWD/cc
-sleep 1 
-ccache -M 100G
-ccache -s
-sleep 1
-ccache --set-config=compression=false
-ccache --show-config | grep compression
-echo $CCACHE_DIR
-ccache -s
-if [ -z "$(ls -A c)" ]; then
-  echo "Folder c is empty. Skipping the rsync command."
-else
-  # If folder c is not empty, execute the rsync command
-time ls -1 c | xargs -I {} -P 10 -n 1 rsync -au c/{} cc/
-cp -f c/ccache.conf cc
-fi
-ccache -s
+
 
 
 repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
@@ -33,21 +8,32 @@ mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 
 
+# Define the log file path
+log_file="deleted_repos.log"
 
-failed_repos=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1 | grep "Failing repos")
+# Sync repositories and capture the output
+output=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1)
 
-# If there are failed repositories, delete them
-if [ -n "$failed_repos" ]; then
+# Check if there are any failing repositories
+if echo "$output" | grep -q "error:"; then
     echo "Deleting failing repositories..."
-    # Extract failing repositories from the error message
+    # Extract failing repositories from the error message and log the deletion
     while IFS= read -r line; do
-        repo_name=$(echo "$line" | cut -d':' -f2)
+        repo_name=$(echo "$line" | awk '{print $NF}')
+        echo "Attempting to delete repository: $repo_name"
         rm -rf "$repo_name"
-    done <<< "$failed_repos"
+        if [ $? -eq 0 ]; then
+            echo "Deleted repository: $repo_name" >> "$log_file"
+        else
+            echo "Failed to delete repository: $repo_name"
+        fi
+    done <<< "$(echo "$output" | grep "Failing repos")"
     
     # Re-sync all repositories after deletion
     echo "Re-syncing all repositories..."
     repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+else
+    echo "All repositories synchronized successfully."
 fi
 
 
