@@ -27,7 +27,7 @@ fi
 ccache -s
 
 
-repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
+repo init -u https://github.com/LineageOS/android.git -b lineage-18.1 --git-lfs
 rm -rf .repo/local_manifests
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
