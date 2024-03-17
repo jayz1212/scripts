@@ -29,8 +29,21 @@ mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 mv scripts/statix.xml .repo/manifests/snippets
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+
+failed_repos=$(repo sync -l | grep "error:")
+
+# If there are failed repositories, delete them
+if [ -n "$failed_repos" ]; then
+    echo "Deleting failing repositories..."
+    for repo in $failed_repos; do
+        repo_name=$(echo $repo | cut -d':' -f1)
+        rm -rf $repo_name
+    done
+fi
+
+
 chmod +x tsync.sh
-source scripts/tsync.sh
+
 source build/envsetup.sh
     lunch lineage_us997-userdebug
     m installclean
