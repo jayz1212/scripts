@@ -1,5 +1,6 @@
 #!/bin/bash
-
+mkdir -p cc
+mkdir -p c
 # Update and install ccache
 sudo apt-get update -y
 sudo apt-get install -y apt-utils
