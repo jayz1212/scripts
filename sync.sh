@@ -41,6 +41,7 @@ if [ -n "$failed_repos" ]; then
     for repo in $failed_repos; do
         repo_name=$(echo $repo | cut -d':' -f1)
         rm -rf $repo_name
+        repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
     done
 fi
 
