@@ -39,7 +39,7 @@ failed_repos=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no
 
 # If there are failed repositories, delete them
 if [ -n "$failed_repos" ]; then
-    echo "Deleting failing repositories..."
+    echo "Deleting failing repositories..." >> a.log
     # Loop through each failed repository
     while read -r repo; do
         repo_name=$(echo "$repo" | cut -d':' -f1)
@@ -47,21 +47,11 @@ if [ -n "$failed_repos" ]; then
     done <<< "$failed_repos"
     
     # Re-sync all repositories after deletion
-    echo "Re-syncing all repositories..."
-    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+    echo "Re-syncing all repositories..." >> a.log
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags >> a.log
 fi
 
 
 
-
-source build/envsetup.sh
-    lunch lineage_us997-userdebug
-    m installclean
-    m -j$(nproc --all) bacon
-
-
-time ls -1 cc | xargs -I {} -P 10 -n 1 rsync -au cc/{} c/
-cp -f cc/ccache.conf c
-ccache -s
 
 
