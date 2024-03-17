@@ -12,7 +12,7 @@ cp scripts/roomservice.xml .repo/local_manifests
 log_file="deleted_repos.log"
 
 # Sync repositories and capture the output
-output=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1)
+output=$(repo sync -c -j64 --force-sync --no-clone-bundle --no-tags 2>&1)
 
 # Check if there are any failing repositories
 if echo "$output" | grep -q "error:"; then
@@ -31,7 +31,7 @@ if echo "$output" | grep -q "error:"; then
     
     # Re-sync all repositories after deletion
     echo "Re-syncing all repositories..."
-    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+    repo sync -c -j64 --force-sync --no-clone-bundle --no-tags
 else
     echo "All repositories synchronized successfully."
 fi
