@@ -34,24 +34,29 @@ cp scripts/roomservice.xml .repo/local_manifests
 
 
 
-# Sync repositories and capture failed repositories
-failed_repos=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1 | grep "error:")
+# Define the log file path
+log_file="deleted_repos.log"
 
-# If there are failed repositories, delete them
+# Sync repositories and capture failed repositories
+failed_repos=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1 | grep "Failing repos")
+
+# If there are failed repositories, delete them and log the deletion
 if [ -n "$failed_repos" ]; then
-    echo "Deleting failing repositories..." >> a.log
-    # Loop through each failed repository
-    while read -r repo; do
-        repo_name=$(echo "$repo" | cut -d':' -f1)
+    echo "Deleting failing repositories..."
+    # Extract failing repositories from the error message and log the deletion
+    while IFS= read -r line; do
+        repo_name=$(echo "$line" | cut -d':' -f2)
+        echo "Deleted repository: $repo_name" >> "$log_file"
         rm -rf "$repo_name"
     done <<< "$failed_repos"
     
     # Re-sync all repositories after deletion
-    echo "Re-syncing all repositories..." >> a.log
-    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags >> a.log
+    echo "Re-syncing all repositories..."
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 fi
 
 
+source build/envsetup.sh
 
 
 
