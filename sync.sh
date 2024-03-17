@@ -30,10 +30,10 @@ repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
 rm -rf .repo/local_manifests
 mkdir .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
-mv scripts/statix.xml .repo/manifests/snippets
-repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
-failed_repos=$(repo sync -l | grep "error:")
+
+
+failed_repos=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1 | grep "error:")
 
 # If there are failed repositories, delete them
 if [ -n "$failed_repos" ]; then
@@ -41,12 +41,13 @@ if [ -n "$failed_repos" ]; then
     for repo in $failed_repos; do
         repo_name=$(echo $repo | cut -d':' -f1)
         rm -rf $repo_name
-        repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
     done
+    echo "Re-syncing all repositories..."
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 fi
 
 
-chmod +x tsync.sh
+
 
 source build/envsetup.sh
     lunch lineage_us997-userdebug
