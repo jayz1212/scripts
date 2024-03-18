@@ -1,36 +1,28 @@
 #!/bin/bash
 
+repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
+
 # Sync repositories and capture the output
-output=\\$(repo sync -c -j\\$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1)
-if echo "\\$output" | grep -q "Failing repos:"; then
+output=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1)
+
+# Check if there are any failing repositories
+if echo "$output" | grep -q "Failing repos:"; then
+    echo "Deleting failing repositories..."
+    # Extract failing repositories from the error message and echo the deletion path
     while IFS= read -r line; do
-        repo_info=\\$(echo "\\$line" | awk -F': ' '{print \\$NF}')
-        repo_path=\\$(dirname "\\$repo_info")
-        repo_name=\\$(basename "\\$repo_info")
-        rm -rf "\\$repo_path/\\$repo_name"
-    done <<< "\\$(echo "\\$output" | awk '/Failing repos:/ {flag=1; next} /Repo command failed due to the following `SyncError` errors:/ {flag=0} flag')"
-    repo sync -c -j\\$(nproc --all) --force-sync --no-clone-bundle --no-tags
+        # Extract repository name and path from the error message
+        repo_info=$(echo "$line" | awk -F': ' '{print $NF}')
+        repo_path=$(dirname "$repo_info")
+        repo_name=$(basename "$repo_info")
+        # Echo the deletion path
+        echo "Deleted repository: $repo_info"
+        # Delete the repository
+        rm -rf "$repo_path/$repo_name"
+    done <<< "$(echo "$output" | awk '/Failing repos:/ {flag=1; next} /Repo command failed due to the following `SyncError` errors:/ {flag=0} flag')"
+
+    # Re-sync all repositories after deletion
+    echo "Re-syncing all repositories..."
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 else
     echo "All repositories synchronized successfully."
 fi
-
-echo "\\$sync">> craverun.sh
-
-
-
-
-
-echo '#!/bin/bash' > craverun.sh
-echo 'output=\$(repo sync -c -j\$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1)' >> craverun.sh
-echo 'if echo "\$output" | grep -q "Failing repos:"; then' >> craverun.sh
-echo '    while IFS= read -r line; do' >> craverun.sh
-echo '        repo_info=\$(echo "\$line" | awk -F": " "{print \\$NF}")' >> craverun.sh
-echo '        repo_path=\$(dirname "\$repo_info")' >> craverun.sh
-echo '        repo_name=\$(basename "\$repo_info")' >> craverun.sh
-echo '        rm -rf "\$repo_path/\$repo_name"' >> craverun.sh
-echo '    done <<< "\$(echo "\$output" | awk "/Failing repos:/ {flag=1; next} /Repo command failed due to the following \`SyncError\` errors:/ {flag=0} flag")"' >> craverun.sh
-echo '    repo sync -c -j\$(nproc --all) --force-sync --no-clone-bundle --no-tags' >> craverun.sh
-echo 'else' >> craverun.sh
-echo '    echo "All repositories synchronized successfully."' >> craverun.sh
-echo 'fi' >> craverun.sh
-

@@ -18,7 +18,7 @@ if echo "$output" | grep -q "Failing repos:"; then
         echo "Deleted repository: $repo_info"
         # Delete the repository
         rm -rf "$repo_path/$repo_name"
-    done <<< "$(echo "$output" | awk '/Failing repos:/ {flag=1; next} /Repo command failed due to the following `SyncError` errors:/ {flag=0} flag')"
+    done <<< "$(echo "$output" | awk '/Failing repos:/ {flag=1; next} /Try/ {flag=0} flag')"
 
     # Re-sync all repositories after deletion
     echo "Re-syncing all repositories..."
