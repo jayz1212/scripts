@@ -2,6 +2,9 @@
 
 repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
 
+
+
+log_file="deleted_repos.log"
 # Sync repositories and capture the output
 output=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1)
 
@@ -15,7 +18,7 @@ if echo "$output" | grep -q "Failing repos:"; then
         repo_path=$(dirname "$repo_info")
         repo_name=$(basename "$repo_info")
         # Echo the deletion path
-        echo "Deleted repository: $repo_info"
+        echo "Deleted repository: $repo_info" >> "$log_file"
         # Delete the repository
         rm -rf "$repo_path/$repo_name"
     done <<< "$(echo "$output" | awk '/Failing repos:/ {flag=1; next} /Try/ {flag=0} flag')"
