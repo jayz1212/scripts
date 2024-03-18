@@ -3,7 +3,7 @@
 repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
 
 
-./opt/crave/resync.sh
+/opt/crave/resync.sh
 # # Sync repositories and capture the output
 # output=$(repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags 2>&1)
 
