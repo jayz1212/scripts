@@ -1,4 +1,4 @@
-export SCRIPT=$(cat <<'EOF'
+export CRAVESYNC=$(cat <<'EOF'
 #!/bin/bash
 
 # Run repo sync command and capture the output
@@ -16,7 +16,7 @@ if echo "$output" | grep -q "Failing repos:"; then
         # Echo the deletion path
         echo "Deleted repository: $repo_info"
         # Save the deletion path to a text file
-        echo "Deleted repository: $repo_info" >> deleted_repositories.txt
+        echo "Deleted repository: $repo_info" > deleted_repositories.txt
         # Delete the repository
         rm -rf "$repo_path/$repo_name"
     done <<< "$(echo "$output" | awk '/Failing repos:/ {flag=1; next} /Try/ {flag=0} flag')"
