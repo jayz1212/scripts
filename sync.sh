@@ -11,7 +11,7 @@ CORE="${8:-"$(nproc --all)"}"
 mkdir -p cc
 mkdir -p c
 
-
+repo init -u https://github.com/Evolution-X/manifest -b uqpr2-j
 
 if [ -z "$(ls -A c)" ]; then
   echo "Folder c is empty. Skipping the rsync command."
