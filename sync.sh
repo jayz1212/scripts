@@ -57,49 +57,7 @@ cp scripts/roomservice.xml .repo/local_manifests
 
 source scripts/clean.sh
 
-main() {
-    local output_file="/tmp/output_$(date +%Y%m%d%H%M%S).txt"
-    local deleted_file="deleted_repositories_$(date +%Y%m%d%H%M%S).txt"
-
-    # Run repo sync command and capture the output
-    if ! repo sync -c -j"$(nproc --all)" --force-sync --no-clone-bundle --no-tags 2>&1 | tee "$output_file"; then
-        echo "repo sync command failed. Check the output file for details: $output_file"
-        return 1
-    fi
-
-    # Check if there are any failing repositories
-    if grep -q "Failing repos:" "$output_file" ; then
-        echo "Deleting failing repositories..."
-        local start_deleting=false
-        while IFS= read -r line; do
-            if [[ $line == "Failing repos:" ]]; then
-                start_deleting=true
-                continue
-            fi
-            if [[ $start_deleting == true ]]; then
-                # Stop if the line starts with "Try"
-                if [[ $line == Try* ]]; then
-                    break
-                fi
-                # Assuming the format is direct paths, adjust if necessary
-                if [[ -n $line ]]; then
-                    local repo_path=$(dirname "$line")
-                    local repo_name=$(basename "$line")
-                    echo "Deleted repository: $line"
-                    echo "Deleted repository: $line" >> "$deleted_file"
-                    rm -rf "$repo_path/$repo_name"
-                fi
-            fi
-        done < "$output_file"
-
-        echo "Re-syncing all repositories..."
-        repo sync -c -j"$(nproc --all)" --force-sync --no-clone-bundle --no-tags
-    else
-        echo "All repositories synchronized successfully."
-    fi
-}
-
-main "$@"
+/opt/crave/resync.sh
 
 
 
