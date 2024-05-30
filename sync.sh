@@ -4,7 +4,7 @@ git lfs uninstall
 
 
 
-rm -rf .repo/local_manifests device/lge/msm8996-common
+rm -rf .repo/local_manifests
 
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
