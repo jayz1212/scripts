@@ -3,6 +3,7 @@ repo init -u https://github.com/LineageOS/android.git -b lineage-20.0 --git-lfs
 
 
 
+
 rm -rf .repo/local_manifests
 
 mkdir -p .repo/local_manifests
