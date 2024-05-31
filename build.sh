@@ -20,7 +20,10 @@ rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuil
 
 
 source build/envsetup.sh
-
+cd device/lge/msm8996-common
+git fetch https://github.com/LineageOS/android_device_lge_msm8996-common.git lineage-21
+git cherry-pick 202b7b2a91cd8cf3816f93f90942f1fdf5ebb92f
+cd ../../../
 
 
 
