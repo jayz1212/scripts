@@ -54,7 +54,7 @@ source build/envsetup.sh
 cd device/lge/msm8996-common
 git fetch https://github.com/LineageOS/android_device_lge_msm8996-common.git lineage-21
 git cherry-pick 202b7b2a91cd8cf3816f93f90942f1fdf5ebb92f
-sed -i 's/$(call inherit-product, $(SRC_TARGET_DIR)\/product\/non_ab_device\.mk)//g' msm8996.mk
+
 
 cd ../../../
 
@@ -82,8 +82,8 @@ rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuil
 /opt/crave/resync.sh
 
 
-source build/envsetup.sh
 cd device/lge/msm8996-common
+
 sed -i 's/$(call inherit-product, $(SRC_TARGET_DIR)\/product\/non_ab_device\.mk)//g' msm8996.mk
 
 cd ../../../
