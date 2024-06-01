@@ -65,8 +65,8 @@ sed -i '/BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true/a\BUILD_BROKEN_INC
 cd ../../../
 
 cd build/tools
-git fetch https://github.com/xc112lg/android_build.git patch-3
-git cherry-pick 1fa6776d7e9287460ef91db066b43636fac60dfb
+git fetch https://github.com/xc112lg/android_build.git patch-4
+git cherry-pick 6c69c17a863ba67cc030a0626760b0dddaaa5877
 cd ../../
 
 
