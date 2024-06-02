@@ -53,7 +53,8 @@ EOF
 
 
 
-lunch lineage_us997-userdebug
+#lunch lineage_us997-userdebug
+lunch lineage_h872-userdebug
 m installclean
 m bacon
 
@@ -97,7 +98,8 @@ done
 
 
 
-lunch lineage_us997-userdebug
+#lunch lineage_us997-userdebug
+lunch lineage_h872-userdebug
 m installclean
 m target-files-package otatools
 
