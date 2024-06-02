@@ -4,7 +4,7 @@ repo init -u https://github.com/LineageOS/android.git -b lineage-20.0 --git-lfs
 git lfs install
 
 
-rm -rf .repo/local_manifests device/lge/msm8996-common build/tools
+rm -rf .repo/local_manifests device/lge build/tools vendor
 
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
