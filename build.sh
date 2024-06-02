@@ -77,10 +77,11 @@ cd device/lge/msm8996-common
 # git cherry-pick 202b7b2a91cd8cf3816f93f90942f1fdf5ebb92f
 # sed -i 's/$(call inherit-product, $(SRC_TARGET_DIR)\/product\/non_ab_device\.mk)//g' msm8996.mk
 sed -i '/BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true/a\BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true' BoardConfigCommon.mk
+
 # git fetch https://github.com/LineageOS/android_device_lge_msm8996-common.git lineage-21
 # git cherry-pick bc3eabcf8adca63c5bd17d61a3066b5d40bdf72f
 cd ../../../
-
+sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
 cd build/tools
 git fetch https://github.com/xc112lg/android_build.git patch-1
 git cherry-pick b7b12b875a97eee6e512c74c53a82066e237a31a
