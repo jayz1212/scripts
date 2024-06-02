@@ -249,8 +249,8 @@ sed -i '/BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true/a\BUILD_BROKEN_INC
 cd ../../../
 
 cd build/tools
-git fetch https://github.com/xc112lg/android_build.git patch-2
-git cherry-pick 17a4d22add29cd9e9a333030aea12f0e444f3637
+git fetch https://github.com/xc112lg/android_build.git patch-1
+git cherry-pick b7b12b875a97eee6e512c74c53a82066e237a31a
 cd ../../
 
 subject='/C=DE/ST=Germany/L=Berlin/O=Max Mustermann/OU=Max Mustermann/CN=Max Mustermann/emailAddress=max@mustermann.de'
