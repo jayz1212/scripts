@@ -33,10 +33,10 @@ for x in releasekey platform shared media networkstack testkey cyngn-priv-app bl
 done
 
 mkdir vendor/extra
-mkdir vendor/lineage-priv
+
 cp -r ~/.android-certs vendor/extra/keys
 
-cp -r ~/.android-certs vendor/lineage-priv/keys
+
 echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey" > vendor/extra/product.mk
 # cat << 'EOF' >  vendor/lineage-priv/keys/BUILD.bazel
 # filegroup(
