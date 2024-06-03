@@ -8,7 +8,7 @@ rm -rf .repo/local_manifests device/lge build/tools
 
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
-
+rm -rf ~/.android-certs
 
 repo init --git-lfs
 rm -rf external/chromium-webview/prebuilt/*
