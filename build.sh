@@ -4,7 +4,7 @@ repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs
 git lfs install
 
 
-rm -rf .repo/local_manifests device/lge build/tools 
+rm -rf .repo/local_manifests device/lge build/tools vendor
 
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
