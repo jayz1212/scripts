@@ -49,6 +49,8 @@ main $*
 chmod +x scripts/generate_certs.sh
 source scripts/generate_certs.sh
 
+ls ~/.android-certs/
+
 
 source build/envsetup.sh
 cd build/tools
