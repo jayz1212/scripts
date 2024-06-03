@@ -62,7 +62,7 @@ cd ../../
 
 
 
-rm -rf ~/.android-certs vendor/extra/keys
+#rm -rf ~/.android-certs vendor/extra/keys
 
 
 #echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey" > vendor/extra/product.mk
