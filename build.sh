@@ -60,8 +60,8 @@ cd ../../
 
 
 cd kernel/lge/msm8996
-git fetch https://github.com/xc112lg/android_kernel_lge_msm8996.git ksu
-git cherry-pick 4daa0001c4f8dc30c446c1dcd74fcad07efae97c
+git fetch https://github.com/xc112lg/android_kernel_lge_msm8996.git ksutest
+git cherry-pick 013a29b6da453c866b58b1f7764926d52b3ffeb1
 cd ../../../
 
 
