@@ -4,7 +4,7 @@ repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs
 git lfs install
 
 
-rm -rf .repo/local_manifests device/lge build/tools 
+rm -rf .repo/local_manifests device/lge build/tools kernel/lge/msm8996
 
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
@@ -58,6 +58,11 @@ git fetch https://github.com/xc112lg/android_build.git patch-1
 git cherry-pick b7b12b875a97eee6e512c74c53a82066e237a31a
 cd ../../
 
+
+cd kernel/lge/msm8996
+git fetch https://github.com/xc112lg/android_kernel_lge_msm8996.git ksu
+git cherry-pick 4daa0001c4f8dc30c446c1dcd74fcad07efae97c
+cd ../../../
 
 
 
