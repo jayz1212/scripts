@@ -4,8 +4,8 @@ repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs
 git lfs install
 
 
-rm -rf .repo/local_manifests device/lge build/tools kernel/lge/msm8996
-
+rm -rf .repo/local_manifests device/lge build/tools kernel/lge/msm8996 
+rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 #rm -rf ~/.android-certs
