@@ -1,7 +1,7 @@
 #!/bin/bash
-git lfs install
+
 repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs
-git lfs install
+
 
 
 rm -rf .repo/local_manifests device/lge build/tools kernel/lge/msm8996 
