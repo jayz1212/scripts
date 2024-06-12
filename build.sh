@@ -4,7 +4,7 @@ repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs
 
 
 
-rm -rf .repo/local_manifests device/lge build/tools kernel/lge/msm8996 
+rm -rf .repo/local_manifests device/lge build/tools 
 rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
@@ -52,17 +52,22 @@ source scripts/generate_certs.sh
 ls ./.android-certs/
 
 
-source build/envsetup.sh
-cd build/tools
-git fetch https://github.com/xc112lg/android_build.git patch-1
-git cherry-pick b7b12b875a97eee6e512c74c53a82066e237a31a
+# source build/envsetup.sh
+# cd build/tools
+# git fetch https://github.com/xc112lg/android_build.git patch-1
+# git cherry-pick b7b12b875a97eee6e512c74c53a82066e237a31a
+# cd ../../
+
+cd frameworks/base
+git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
+git cherry-pick 7118bf48101e085db56868242a28eeb655d18c1c
+sleep 1
+git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
+git cherry-pick 1ba5c703274138b981d20b106ada8e0c0816f232
+sleep 1
+git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
+git cherry-pick 72042e3cd6451b5b14e9b549892611758986e162
 cd ../../
-
-
-cd kernel/lge/msm8996
-git fetch https://github.com/xc112lg/android_kernel_lge_msm8996.git ksutest
-git cherry-pick 013a29b6da453c866b58b1f7764926d52b3ffeb1
-cd ../../../
 
 
 
