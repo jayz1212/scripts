@@ -62,10 +62,10 @@ cd frameworks/base
 git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
 git cherry-pick 7118bf48101e085db56868242a28eeb655d18c1c
 sleep 1
-git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
+#git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
 git cherry-pick 1ba5c703274138b981d20b106ada8e0c0816f232
 sleep 1
-git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
+#git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
 git cherry-pick 72042e3cd6451b5b14e9b549892611758986e162
 cd ../../
 
