@@ -59,8 +59,8 @@ ls ./.android-certs/
 # cd ../../
 
 cd frameworks/base
-git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
-git cherry-pick 1ba5c703274138b981d20b106ada8e0c0816f232
+git fetch https://github.com/xc112lg/android_frameworks_base-1.git patch-19
+git cherry-pick 34bfc667283e91110ca1672b413480391b762cf9
 sleep 1
 git fetch https://github.com/xc112lg/android_frameworks_base-1.git patch-20
 git cherry-pick aa8de577b56462e4ff31ec5a55cc901f3307d991
