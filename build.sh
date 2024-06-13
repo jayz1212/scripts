@@ -4,7 +4,7 @@
 
 
 
-rm -rf .repo/local_manifests device/lge build/tools frameworks/base
+rm -rf .repo/local_manifests device/lge build/tools frameworks/base vendor/gapps
 rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
@@ -14,6 +14,9 @@ repo init --git-lfs
 rm -rf external/chromium-webview/prebuilt/*
 rm -rf .repo/projects/external/chromium-webview/prebuilt/*.git
 rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuilt_*.git
+
+
+git clone https://gitlab.com/MindTheGapps/vendor_gapps -b tau vendor/gapps
 
 main() {
     # Run repo sync command and capture the output
@@ -139,6 +142,7 @@ cd ../../
 # done
 #sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
 sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
+sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a include vendor/gapps/arm64/arm64-vendor.mk' device/lge/msm8996-common/msm8996.mk
 mkdir vendor/lineage-priv
 cp -r ~/.android-certs vendor/lineage-priv/keys
 echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey" > vendor/lineage-priv/keys/keys.mk
