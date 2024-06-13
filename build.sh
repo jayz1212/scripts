@@ -1,6 +1,6 @@
 #!/bin/bash
 
-repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs
+
 
 
 
@@ -135,7 +135,7 @@ cd ../../
 #sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
 sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
 mkdir vendor/lineage-priv
-mv ~/.android-certs vendor/lineage-priv/keys
+cp -r ~/.android-certs vendor/lineage-priv/keys
 echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey" > vendor/lineage-priv/keys/keys.mk
 cat << 'EOF' >  vendor/lineage-priv/keys/BUILD.bazel
 filegroup(
