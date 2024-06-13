@@ -136,7 +136,7 @@ cd ../../
 sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
 mkdir vendor/lineage-priv
 mv ~/.android-certs vendor/lineage-priv/keys
-echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey" > vendor/extra/product.mk
+echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey" > vendor/lineage-priv/keys/keys.mk
 cat << 'EOF' >  vendor/lineage-priv/keys/BUILD.bazel
 filegroup(
     name = "android_certificate_directory",
