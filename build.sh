@@ -132,7 +132,21 @@ cd ../../
 # for x in releasekey platform shared media networkstack testkey cyngn-priv-app bluetooth sdk_sandbox verifiedboot; do \
 #  yes "" |   ./development/tools/make_key ~/.android-certs/$x "$subject"; \
 # done
-
+#sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
+sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
+mkdir vendor/lineage-priv
+mv ~/.android-certs vendor/lineage-priv/keys
+echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey" > vendor/extra/product.mk
+cat << 'EOF' >  vendor/lineage-priv/keys/BUILD.bazel
+filegroup(
+    name = "android_certificate_directory",
+    srcs = glob([
+        "*.pk8",
+        "*.pem",
+    ]),
+    visibility = ["//visibility:public"],
+)
+EOF
 
 
 
@@ -140,9 +154,3 @@ lunch lineage_us997-userdebug
 #lunch lineage_h872-userdebug
  m installclean
 m bacon
-
-# Create OTA update package from signed target files
-ota_from_target_files -k ~/.android-certs/releasekey \
-    --block --backup=true \
-    signed-target_files.zip \
-    signed-ota_update.zip
