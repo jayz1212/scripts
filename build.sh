@@ -152,6 +152,8 @@ EOF
 
 
 
+source build/envsetup.sh
+
 lunch lineage_us997-userdebug
 #lunch lineage_h872-userdebug
  m installclean
