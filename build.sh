@@ -161,12 +161,12 @@ EOF
 
 source build/envsetup.sh
 
-    lunch lineage_us997-userdebug
-    m installclean
-    m -j$(nproc --all) bacon
-    lunch lineage_h870-userdebug
-    m installclean
-    m -j$(nproc --all) bacon
-    lunch lineage_h872-user
+    # lunch lineage_us997-userdebug
+    # m installclean
+    # m -j$(nproc --all) bacon
+    # lunch lineage_h870-userdebug
+    # m installclean
+    # m -j$(nproc --all) bacon
+    lunch lineage_h872-userdebug
     m installclean
     m -j$(nproc --all) bacon
