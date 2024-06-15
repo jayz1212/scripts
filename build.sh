@@ -160,7 +160,7 @@ EOF
 
 
 
-cd vendor/rising
+cd vendor/lineage
 
 
 git fetch https://github.com/jayz1212/android_vendor_rising.git patch-1
