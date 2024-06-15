@@ -9,7 +9,7 @@ repo init --depth=1 --no-repo-verify -u https://github.com/RisingTechOSS/android
 
 
 
-rm -rf .repo/local_manifests device/lge build/tools frameworks/base vendor/gapps
+rm -rf .repo/local_manifests device/lge build/tools frameworks/base vendor/gapps vendor/lineage
 rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
@@ -166,6 +166,7 @@ cd vendor/lineage
 git fetch https://github.com/jayz1212/android_vendor_rising.git patch-1
 
 git cherry-pick e4bdf505466c9d19abf502b2d11b5e3226847332
+git cherry-pick c2777372f5fab43be188b37edf51c36afc0a4346
 cd ../../
 
 
