@@ -160,6 +160,16 @@ EOF
 
 
 
+cd vendor/rising
+
+
+git fetch https://github.com/jayz1212/android_vendor_rising.git patch-1
+
+git cherry-pick e4bdf505466c9d19abf502b2d11b5e3226847332
+cd ../../
+
+
+
 source build/envsetup.sh
 
     # lunch lineage_us997-userdebug
