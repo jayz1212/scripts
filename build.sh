@@ -1,5 +1,10 @@
 #!/bin/bash
 
+rm -rf external/chromium-webview/prebuilt/*
+rm -rf .repo/projects/external/chromium-webview/prebuilt/*.git
+rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuilt_*.git
+
+repo init --depth=1 --no-repo-verify -u https://github.com/RisingTechOSS/android -b thirteen --git-lfs -g default,-mips,-darwin,-notdefault
 
 
 
@@ -10,13 +15,9 @@ mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 #rm -rf ~/.android-certs
 
-repo init --git-lfs
-rm -rf external/chromium-webview/prebuilt/*
-rm -rf .repo/projects/external/chromium-webview/prebuilt/*.git
-rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuilt_*.git
 
 
-git clone https://gitlab.com/MindTheGapps/vendor_gapps -b tau vendor/gapps
+# git clone https://gitlab.com/MindTheGapps/vendor_gapps -b tau vendor/gapps
 
 main() {
     # Run repo sync command and capture the output
@@ -61,18 +62,18 @@ ls ./.android-certs/
 # git cherry-pick b7b12b875a97eee6e512c74c53a82066e237a31a
 # cd ../../
 
-cd frameworks/base
-# git fetch https://github.com/jayz1212/android_frameworks_base.git patch-1
+# cd frameworks/base
+# # git fetch https://github.com/jayz1212/android_frameworks_base.git patch-1
+# # git cherry-pick ceaafedfc058ebcf509b16f146dfe5331889e345
+# sleep 1
+# git fetch https://github.com/jayz1212/android_frameworks_base.git patch-2
+# git cherry-pick 33c2bde34a5f73c16a84ee512e5342e5b620d9c9
+# sleep 1
 # git cherry-pick ceaafedfc058ebcf509b16f146dfe5331889e345
-sleep 1
-git fetch https://github.com/jayz1212/android_frameworks_base.git patch-2
-git cherry-pick 33c2bde34a5f73c16a84ee512e5342e5b620d9c9
-sleep 1
-git cherry-pick ceaafedfc058ebcf509b16f146dfe5331889e345
-sleep 1
+# sleep 1
 
-sleep 1
-git cherry-pick c1b8a711cf055962976a3597eb958f2bbf3c3087
+# sleep 1
+# git cherry-pick c1b8a711cf055962976a3597eb958f2bbf3c3087
 #git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
 #git cherry-pick 72042e3cd6451b5b14e9b549892611758986e162
 cd ../../
@@ -142,7 +143,7 @@ cd ../../
 # done
 #sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
 sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
-sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a include vendor/gapps/arm64/arm64-vendor.mk' device/lge/msm8996-common/msm8996.mk
+#sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a include vendor/gapps/arm64/arm64-vendor.mk' device/lge/msm8996-common/msm8996.mk
 mkdir vendor/lineage-priv
 cp -r ~/.android-certs vendor/lineage-priv/keys
 echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey" > vendor/lineage-priv/keys/keys.mk
