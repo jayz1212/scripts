@@ -167,6 +167,7 @@ git fetch https://github.com/jayz1212/android_vendor_rising.git patch-1
 
 git cherry-pick e4bdf505466c9d19abf502b2d11b5e3226847332
 git cherry-pick c2777372f5fab43be188b37edf51c36afc0a4346
+git cherry-pick 403e128da44acc73d7527dc55519c1cf990f5b78
 cd ../../
 
 
