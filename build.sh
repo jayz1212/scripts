@@ -7,7 +7,7 @@ rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuil
 repo init --depth=1 --no-repo-verify -u https://github.com/RisingTechOSS/android -b thirteen --git-lfs -g default,-mips,-darwin,-notdefault
 
 
-
+export WITH_GMS := true
 
 rm -rf .repo/local_manifests device/lge build/tools frameworks/base vendor/gapps vendor/lineage
 rm -rf  ~/.android-certs/
@@ -160,15 +160,13 @@ EOF
 
 
 
-cd vendor/lineage
+cd vendor/qcom/opensource/vibrator
 
 
-git fetch https://github.com/jayz1212/android_vendor_rising.git patch-1
+git fetch https://github.com/jayz1212/android_vendor_qcom_opensource_vibrator.git patch-1
 
-git cherry-pick e4bdf505466c9d19abf502b2d11b5e3226847332
-git cherry-pick c2777372f5fab43be188b37edf51c36afc0a4346
-git cherry-pick 403e128da44acc73d7527dc55519c1cf990f5b78
-cd ../../
+git cherry-pick 2c89f15f97270415cf209e5de3f92ab2de752b8c
+cd ../../../../
 
 
 
