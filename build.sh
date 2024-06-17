@@ -140,31 +140,32 @@ cd ../../
 #sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
 
 
-subject='/C=PH/ST=Metro Manila/L=Manila/O=RexC/OU=RexC/CN=Rexc/emailAddress=dtiven13@gmail.com'
-mkdir ~/.android-certs
+# subject='/C=PH/ST=Metro Manila/L=Manila/O=RexC/OU=RexC/CN=Rexc/emailAddress=dtiven13@gmail.com'
+# mkdir ~/.android-certs
 
-for x in releasekey platform shared media networkstack testkey bluetooth sdk_sandbox verifiedboot; do \
- yes "" |   ./development/tools/make_key ~/.android-certs/$x "$subject"; \
-done
-
-
-
-sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
-mkdir vendor/lineage-priv
-mv ~/.android-certs vendor/lineage-priv/keys
-echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey" > vendor/lineage-priv/keys/keys.mk
-cat <<EOF > vendor/lineage-priv/keys/BUILD.bazel
-filegroup(
-    name = "android_certificate_directory",
-    srcs = glob([
-        "*.pk8",
-        "*.pem",
-    ]),
-    visibility = ["//visibility:public"],
-)
-EOF
+# for x in releasekey platform shared media networkstack testkey bluetooth sdk_sandbox verifiedboot; do \
+#  yes "" |   ./development/tools/make_key ~/.android-certs/$x "$subject"; \
+# done
 
 
+
+# sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
+# mkdir vendor/lineage-priv
+# mv ~/.android-certs vendor/lineage-priv/keys
+# echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey" > vendor/lineage-priv/keys/keys.mk
+# cat <<EOF > vendor/lineage-priv/keys/BUILD.bazel
+# filegroup(
+#     name = "android_certificate_directory",
+#     srcs = glob([
+#         "*.pk8",
+#         "*.pem",
+#     ]),
+#     visibility = ["//visibility:public"],
+# )
+# EOF
+
+
+sed -i 's/183621644ce05/183181402cc4c/g' device/lge/h872/lineage_h872.mk
 
 
 
