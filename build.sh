@@ -141,7 +141,7 @@ ls ./.android-certs/
 #  yes "" |   ./development/tools/make_key ~/.android-certs/$x "$subject"; \
 # done
 #sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
-if [ -f vendor/extra/product.mk ]; then
+if [ -f vendor/lineage-priv/keys/keys.mk ]; then
     echo "File exists, Skipping key generation"
 else
    chmod +x scripts/generate_certs.sh
