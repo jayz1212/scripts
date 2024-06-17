@@ -7,7 +7,7 @@ subject='/C=PH/ST=Philippines/L=Manila/O=RexC/OU=RexC/CN=Rexc/emailAddress=dtive
 mkdir -p ~/.android-certs
 
 # Generate initial certificates
-for cert in bluetooth cyngn-app media networkstack platform releasekey sdk_sandbox shared testcert testkey verity; do
+for cert in bluetooth cyngn-app media nfc networkstack platform releasekey sdk_sandbox shared testcert testkey verity; do
 yes "" |    ./development/tools/make_key ~/.android-certs/$cert "$subject"
 done
 
