@@ -140,7 +140,7 @@ cd ../../
 #sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
 
 
-subject='/C=PH/ST=Philippines/L=Manila/O=RexC/OU=RexC/CN=Rexc/emailAddress=dtiven13@gmail.com'
+subject='/C=PH/ST=Metro Manila/L=Manila/O=RexC/OU=RexC/CN=Rexc/emailAddress=dtiven13@gmail.com'
 mkdir ~/.android-certs
 
 for x in releasekey platform shared media networkstack testkey bluetooth sdk_sandbox verifiedboot; do \
