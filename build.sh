@@ -1,23 +1,19 @@
 #!/bin/bash
 
-rm -rf external/chromium-webview/prebuilt/*
-rm -rf .repo/projects/external/chromium-webview/prebuilt/*.git
-rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuilt_*.git
-
-repo init --depth=1 --no-repo-verify -u https://github.com/RisingTechOSS/android -b thirteen --git-lfs -g default,-mips,-darwin,-notdefault
 
 
-export WITH_GMS := true
 
-rm -rf .repo/local_manifests device/lge build/tools frameworks/base vendor/gapps vendor/lineage
+
+rm -rf .repo/local_manifests device/lge build/tools frameworks/base
 rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 #rm -rf ~/.android-certs
 
-
-
-# git clone https://gitlab.com/MindTheGapps/vendor_gapps -b tau vendor/gapps
+repo init --git-lfs
+rm -rf external/chromium-webview/prebuilt/*
+rm -rf .repo/projects/external/chromium-webview/prebuilt/*.git
+rm -rf .repo/project-objects/LineageOS/android_external_chromium-webview_prebuilt_*.git
 
 main() {
     # Run repo sync command and capture the output
@@ -50,7 +46,8 @@ main() {
 
 main $*
 
-
+#chmod +x scripts/generate_certs.sh
+#source scripts/generate_certs.sh
 
 ls ./.android-certs/
 
@@ -61,21 +58,21 @@ ls ./.android-certs/
 # git cherry-pick b7b12b875a97eee6e512c74c53a82066e237a31a
 # cd ../../
 
-# cd frameworks/base
-# # git fetch https://github.com/jayz1212/android_frameworks_base.git patch-1
-# # git cherry-pick ceaafedfc058ebcf509b16f146dfe5331889e345
-# sleep 1
-# git fetch https://github.com/jayz1212/android_frameworks_base.git patch-2
-# git cherry-pick 33c2bde34a5f73c16a84ee512e5342e5b620d9c9
-# sleep 1
+cd frameworks/base
+# git fetch https://github.com/jayz1212/android_frameworks_base.git patch-1
 # git cherry-pick ceaafedfc058ebcf509b16f146dfe5331889e345
-# sleep 1
+sleep 1
+git fetch https://github.com/jayz1212/android_frameworks_base.git patch-2
+git cherry-pick 33c2bde34a5f73c16a84ee512e5342e5b620d9c9
+sleep 1
+git cherry-pick ceaafedfc058ebcf509b16f146dfe5331889e345
+sleep 1
 
-# sleep 1
-# git cherry-pick c1b8a711cf055962976a3597eb958f2bbf3c3087
+sleep 1
+git cherry-pick c1b8a711cf055962976a3597eb958f2bbf3c3087
 #git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
 #git cherry-pick 72042e3cd6451b5b14e9b549892611758986e162
-#cd ../../
+cd ../../
 
 
 
@@ -141,17 +138,22 @@ ls ./.android-certs/
 #  yes "" |   ./development/tools/make_key ~/.android-certs/$x "$subject"; \
 # done
 #sed -i '/-include device\/lge\/msm8996-common\/BoardConfigCommon.mk/a\-include vendor/lineage-priv/keys/keys.mk' device/lge/g6-common/BoardConfigCommon.mk
-if [ -f vendor/lineage-priv/keys/keys.mk ]; then
-    echo "File exists, Skipping key generation"
-else
-   chmod +x scripts/generate_certs.sh
-source scripts/generate_certs.sh
+
+
+subject='/C=PH/ST=Philippines/L=Manila/O=RexC/OU=RexC/CN=Rexc/emailAddress=dtiven13@gmail.com'
+mkdir ~/.android-certs
+
+for x in releasekey platform shared media networkstack testkey bluetooth sdk_sandbox verifiedboot; do \
+ yes "" |   ./development/tools/make_key ~/.android-certs/$x "$subject"; \
+done
+
+
+
 sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a -include vendor/lineage-priv/keys/keys.mk' device/lge/msm8996-common/msm8996.mk
-#sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a include vendor/gapps/arm64/arm64-vendor.mk' device/lge/msm8996-common/msm8996.mk
 mkdir vendor/lineage-priv
-cp -r ~/.android-certs vendor/lineage-priv/keys
+mv ~/.android-certs vendor/lineage-priv/keys
 echo "PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/lineage-priv/keys/releasekey" > vendor/lineage-priv/keys/keys.mk
-cat << 'EOF' >  vendor/lineage-priv/keys/BUILD.bazel
+cat <<EOF > vendor/lineage-priv/keys/BUILD.bazel
 filegroup(
     name = "android_certificate_directory",
     srcs = glob([
@@ -161,31 +163,14 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 EOF
-fi
 
 
-
-
-
-
-cd vendor/qcom/opensource/vibrator
-
-
-git fetch https://github.com/jayz1212/android_vendor_qcom_opensource_vibrator.git patch-1
-
-git cherry-pick 2c89f15f97270415cf209e5de3f92ab2de752b8c
-cd ../../../../
 
 
 
 source build/envsetup.sh
 
-    # lunch lineage_us997-userdebug
-    # m installclean
-    # m -j$(nproc --all) bacon
-    # lunch lineage_h870-userdebug
-    # m installclean
-    # m -j$(nproc --all) bacon
-    lunch lineage_h872-userdebug
-    m installclean
-    m -j$(nproc --all) bacon
+#lunch lineage_us997-userdebug
+lunch lineage_h872-userdebug
+m installclean
+m bacon
