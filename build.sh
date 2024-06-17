@@ -166,7 +166,7 @@ cd ../../
 
 
 sed -i 's/183621644ce05/183181402cc4c/g' device/lge/h872/lineage_h872.mk
-
+cat device/lge/h872/lineage_h872.mk
 
 
 source build/envsetup.sh
