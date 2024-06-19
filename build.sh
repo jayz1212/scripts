@@ -77,8 +77,8 @@ cd ../../
 
 
 sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a include vendor/gapps/arm64/arm64-vendor.mk' device/lge/msm8996-common/msm8996.mk
-sed -i 's/183621644ce05/183181402cc4c/g' device/lge/h872/lineage_h872.mk
-cat device/lge/h872/lineage_h872.mk
+#sed -i 's/183621644ce05/183181402cc4c/g' device/lge/h872/lineage_h872.mk
+#cat device/lge/h872/lineage_h872.mk
 
 
 source build/envsetup.sh
