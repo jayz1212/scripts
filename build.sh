@@ -83,6 +83,13 @@ sed -i '/include $(LOCAL_PATH)\/vendor_prop.mk/a include vendor/gapps/arm64/arm6
 
 source build/envsetup.sh
 
+    lunch lineage_us997-userdebug
+    m installclean
+    m -j$(nproc --all) bacon
+    lunch lineage_h870-userdebug
+    m installclean
+    m -j$(nproc --all) bacon
+
 #lunch lineage_us997-userdebug
 lunch lineage_h872-userdebug
 m installclean
