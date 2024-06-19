@@ -4,7 +4,7 @@
 
 
 
-rm -rf .repo/local_manifests device/lge build/tools frameworks/base
+rm -rf .repo/local_manifests device/lge build/tools frameworks/base vendor/lineage-priv/keys
 rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
@@ -53,7 +53,7 @@ ls ./.android-certs/
 
 export GH_TOKEN=$(cat gh_token.txt)
 git clone https://$GH_TOKEN@github.com/xc112lg/keys -b main vendor/lineage-priv/keys
-
+ls vendor/lineage-priv/keys
 # source build/envsetup.sh
 # cd build/tools
 # git fetch https://github.com/xc112lg/android_build.git patch-1
