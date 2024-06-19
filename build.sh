@@ -51,6 +51,8 @@ main $*
 git clone https://gitlab.com/MindTheGapps/vendor_gapps -b tau vendor/gapps
 ls ./.android-certs/
 
+export GH_TOKEN=$(cat gh_token.txt)
+git clone https://$GH_TOKEN@github.com/xc112lg/keys -b main vendor/lineage-priv/keys
 
 # source build/envsetup.sh
 # cd build/tools
