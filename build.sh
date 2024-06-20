@@ -41,7 +41,7 @@ main $*
 
 
 
-# source scripts/clean.sh
+ source scripts/clean.sh
 
 
 
