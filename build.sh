@@ -77,10 +77,10 @@ git cherry-pick 2f6f9e05e5f95ef2e7859a3759d9828f951b4475
 cd ../../
 
 
-cd device/lge/msm8996-common
-git fetch https://github.com/jayz1212/android_device_lge_msm8996-common.git patch-2
-git cherry-pick 32ab2191d419f167e030457142ecbca8729a3bbd
-cd ../../../
+# cd device/lge/msm8996-common
+# git fetch https://github.com/jayz1212/android_device_lge_msm8996-common.git patch-2
+# git cherry-pick 32ab2191d419f167e030457142ecbca8729a3bbd
+# cd ../../../
 
 
 
