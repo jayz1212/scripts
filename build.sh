@@ -50,3 +50,9 @@ main $*
 source build/envsetup.sh
 #breakfast h872
 brunch h872
+
+
+
+lunch lineage_h872-ap2a-eng
+m installclean
+m bacon
