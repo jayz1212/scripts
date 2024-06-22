@@ -51,9 +51,9 @@ main $*
 git clone https://gitlab.com/MindTheGapps/vendor_gapps -b tau vendor/gapps
 ls ./.android-certs/
 
-export GH_TOKEN=$(cat gh_token.txt)
-git clone https://$GH_TOKEN@github.com/xc112lg/keys -b main vendor/lineage-priv/keys
-ls vendor/lineage-priv/keys
+# export GH_TOKEN=$(cat gh_token.txt)
+# git clone https://$GH_TOKEN@github.com/xc112lg/keys -b main vendor/lineage-priv/keys
+# ls vendor/lineage-priv/keys
 # source build/envsetup.sh
 # cd build/tools
 # git fetch https://github.com/xc112lg/android_build.git patch-1
@@ -75,6 +75,13 @@ git cherry-pick c1b8a711cf055962976a3597eb958f2bbf3c3087
 #git fetch https://github.com/crdroidandroid/android_frameworks_base.git 14.0
 git cherry-pick 2f6f9e05e5f95ef2e7859a3759d9828f951b4475
 cd ../../
+
+
+cd device/lge/msm8996-common
+git fetch https://github.com/jayz1212/android_device_lge_msm8996-common.git patch-2
+git cherry-pick 32ab2191d419f167e030457142ecbca8729a3bbd
+cd ../../../
+
 
 
 
