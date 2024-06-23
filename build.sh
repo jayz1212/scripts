@@ -48,6 +48,8 @@ main() {
 main $*
 
 source build/envsetup.sh
+
+repopick -p 395676
 #breakfast h872
 brunch h872
 
