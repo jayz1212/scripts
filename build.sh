@@ -9,7 +9,7 @@ rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
 #rm -rf ~/.android-certs
-
+rm -rf out/target/product/*/*.zip
 repo init --git-lfs
 rm -rf external/chromium-webview/prebuilt/*
 rm -rf .repo/projects/external/chromium-webview/prebuilt/*.git
