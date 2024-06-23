@@ -50,6 +50,7 @@ main $*
 source build/envsetup.sh
 
 repopick -p 395676
+repopick -p 395670
 #breakfast h872
 brunch h872
 
