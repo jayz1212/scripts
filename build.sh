@@ -52,10 +52,10 @@ source build/envsetup.sh
 repopick -p 395676
 repopick -p 395670
 #breakfast h872
-brunch h872
+/brunch h872
 
 
 
-# lunch lineage_h872-ap2a-eng
-# m installclean
-# m bacon
+lunch lineage_h872-ap2a-eng
+m installclean
+m bacon
