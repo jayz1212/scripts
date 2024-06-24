@@ -47,8 +47,8 @@ main() {
 
 main $*
 
-
-https://github.com/jayz1212/android_device_lge_msm8996-common -b patch-1 device/lge/msm8996-common
+rm -rf device/lge/msm8996-common
+git clone https://github.com/jayz1212/android_device_lge_msm8996-common.git -b patch-1 device/lge/msm8996-common
 
 source build/envsetup.sh
 
