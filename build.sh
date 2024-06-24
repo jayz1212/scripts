@@ -4,7 +4,7 @@
 
 
 
-rm -rf .repo/local_manifests kernel/lge/msm8996 device/lge/msm8996-common
+rm -rf .repo/local_manifests device/lge/msm8996-common
 rm -rf  ~/.android-certs/
 mkdir -p .repo/local_manifests
 cp scripts/roomservice.xml .repo/local_manifests
@@ -48,8 +48,8 @@ main() {
 main $*
 
 cd device/lge/msm8996-common
-sleep 1 &&git fetch https://github.com/xc112lg/android_device_lge_msm8996-common.git patch-10
-sleep 1 &&git cherry-pick 069b2d107a20986a82574a38b3730cf749c371af 
+sleep 1 &&git fetch https://github.com/jayz1212/android_device_lge_msm8996-common patch-1
+sleep 1 &&git cherry-pick 42fca06db7edf7d0e6a078447f317de91f6fc5aa 
 cd ../../../
 
 source build/envsetup.sh
