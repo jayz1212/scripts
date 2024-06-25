@@ -47,8 +47,8 @@ main() {
 
 main $*
 
-rm -rf kernel/lge/msm8996
-git clone https://github.com/xc112lg/android_kernel_lge_msm8998.git --depth 1 -b test1 kernel/lge/msm8996
+# rm -rf kernel/lge/msm8996
+# git clone https://github.com/xc112lg/android_kernel_lge_msm8998.git --depth 1 -b test1 kernel/lge/msm8996
 
 source build/envsetup.sh
 
